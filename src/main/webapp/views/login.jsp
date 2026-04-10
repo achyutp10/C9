@@ -16,7 +16,7 @@
 
 <div class="box">
 
-    <h2>Login</h2>
+    <h2 class="text-3xl font-bold underline">Login</h2>
     <% if(request.getAttribute("success") != null) { %>
     <p style="color:green;"><%= request.getAttribute("success") %></p>
     <% } %>
@@ -31,7 +31,10 @@
 
         <input type="password" name="password" placeholder="Password" required/>
 
-        <button>Login</button>
+        <button>
+            Login
+        </button>
+
 
     </form>
 

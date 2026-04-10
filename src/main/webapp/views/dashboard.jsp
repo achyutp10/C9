@@ -24,5 +24,11 @@
     <input type="text" name="name" placeholder="New Topic" required/>
     <button>Add</button>
 </form><br><br>
+
+<a href="../viewTopics">View topics</a>
+
+
+
+
 <jsp:include page="footer.jsp"/>
 
