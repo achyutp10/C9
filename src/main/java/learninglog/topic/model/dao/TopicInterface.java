@@ -9,4 +9,5 @@ public interface TopicInterface {
     boolean insertTopic(Topic topic);
     ArrayList<TopicDTO> viewAllTopics();
     boolean updateTopic(int topicId, String topicName, int userId);
+    boolean deleteTopic(int topic_id, int user_id);
 }

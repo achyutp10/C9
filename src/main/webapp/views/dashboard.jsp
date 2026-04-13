@@ -6,6 +6,23 @@
         response.sendRedirect("../views/login.jsp");
     }
 %>
+
+<%
+    String email = "";
+
+    Cookie[] cookies = request.getCookies();
+
+    if (cookies != null) {
+        for (Cookie c : cookies) {
+            if ("userEmail".equals(c.getName())) {
+                email = c.getValue();
+            }
+        }
+    }
+%>
+
+<h1>Welcome Email: <%= email %></h1><br>
+
 <h1>Welcome User: <%= u.getName() %></h1><br>
 <form action="../user-auth" method="post">
     <input type="hidden" name="action" value="logout"/>
