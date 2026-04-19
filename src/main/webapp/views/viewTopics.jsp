@@ -74,6 +74,14 @@
                     </c:choose>
                 </td>
 
+                <td>
+                    <a href="${pageContext.request.contextPath}/viewTopicById?id=${t.topic_id}">
+                        <button type="button">View By Id</button>
+                    </a>
+                </td>
+
+
+
 
             </tr>
         </c:forEach>
