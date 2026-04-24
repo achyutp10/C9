@@ -16,13 +16,15 @@ public class TopicDAO implements TopicInterface {
             return false;
         }
 
-        String sql = "INSERT into topic(name,user_id,created_at,updated_at) values(?,?,NOW(),NOW())";
+        String sql = "INSERT into topic(name,user_id, topic_image, created_at,updated_at) values(?,?,?,NOW(),NOW())";
 
         try (Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, topic.getName());
             ps.setInt(2, topic.getUser_id());
+            ps.setString(3, topic.getTopic_image());
+
             int row = ps.executeUpdate();
             return row > 0;
 
@@ -36,7 +38,7 @@ public class TopicDAO implements TopicInterface {
     @Override
     public ArrayList<TopicDTO> viewAllTopics() {
         ArrayList<TopicDTO> topics = new ArrayList<>();
-        String sql = "SELECT t.id,t.name,t.created_at,t.user_id,u.name as user_name, u.email, u.role FROM topic t JOIN user u on t.user_id = u.id";
+        String sql = "SELECT t.topic_image, t.id,t.name,t.created_at,t.user_id,u.name as user_name, u.email, u.role FROM topic t JOIN user u on t.user_id = u.id";
 
         try (Connection conn = DBConnection.getConnection();
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -50,7 +52,8 @@ public class TopicDAO implements TopicInterface {
                         rs.getInt("user_id"),
                         rs.getString("user_name"),
                         rs.getString("user_email"),
-                        rs.getString("user_role")
+                        rs.getString("user_role"),
+                        rs.getString("topic_image")
                 );
                 topics.add(topic);
             }
